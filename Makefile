@@ -19,4 +19,5 @@ postgres:
 	docker exec -it postgres /bin/sh
 
 # コンテナに入った後
-# psql -h localhost -U hoge -d hogedb
+# psql -h localhost -U postgres -d postgres
+# password: password
