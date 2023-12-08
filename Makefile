@@ -6,6 +6,10 @@ init:
 tidy:
 	go mod tidy
 
+# Goの起動
+run:
+	go run main.go
+
 # dockerの立ち上げ
 docker:
 	docker compose up -d
