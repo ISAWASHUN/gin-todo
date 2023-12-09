@@ -71,37 +71,37 @@ func main() {
 	})
 
 	// タスクを更新するエンドポイント
-r.PUT("/tasks/:id", func(c *gin.Context) {
-	var task Task
-	id := c.Param("id")
+	r.PUT("/tasks/:id", func(c *gin.Context) {
+		var task Task
+		id := c.Param("id")
 
-	if err := db.First(&task, id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Task not found"})
-		return
-	}
+		if err := db.First(&task, id).Error; err != nil {
+			c.JSON(http.StatusNotFound, gin.H{"error": "Task not found"})
+			return
+		}
 
-	if err := c.ShouldBindJSON(&task); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+		if err := c.ShouldBindJSON(&task); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
 
-	db.Save(&task)
-	c.JSON(http.StatusOK, task)
-})
+		db.Save(&task)
+		c.JSON(http.StatusOK, task)
+	})
 
-// タスクを削除するエンドポイント
-r.DELETE("/tasks/:id", func(c *gin.Context) {
-	var task Task
-	id := c.Param("id")
+	// タスクを削除するエンドポイント
+	r.DELETE("/tasks/:id", func(c *gin.Context) {
+		var task Task
+		id := c.Param("id")
 
-	if err := db.First(&task, id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Task not found"})
-		return
-	}
+		if err := db.First(&task, id).Error; err != nil {
+			c.JSON(http.StatusNotFound, gin.H{"error": "Task not found"})
+			return
+		}
 
-	db.Delete(&task)
-	c.JSON(http.StatusOK, gin.H{"message": "Task deleted"})
-})
+		db.Delete(&task)
+		c.JSON(http.StatusOK, gin.H{"message": "Task deleted"})
+	})
 
 	// 8080ポートでサーバーを起動
 	r.Run(":8080")

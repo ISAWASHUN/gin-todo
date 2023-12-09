@@ -1,4 +1,6 @@
-# 30分でチュートリアルシリーズ(Golang編)
+# 【速習シリーズ ①】Go言語でREST APIを作ろう！！
+
+https://zenn.dev/isawa/articles/069cff08d64904
 
 ## 概要
 <hr>
@@ -6,18 +8,18 @@
 
 ## 環境構築
 
-- Go
-
+## 初期化とライブラリのインストール
 ```
-go mod tidy
-```
-
-```
-go run main.go
+make init
+make tidy
 ```
 
-- Docker
-
+## Dockerの起動
 ```
-docker compose up -d
+make up
+```
+
+## Goの起動
+```
+make run
 ```

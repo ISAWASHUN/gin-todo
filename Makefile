@@ -10,14 +10,22 @@ tidy:
 run:
 	go run main.go
 
-# dockerの立ち上げ
-docker:
+# Docker Composeを使用してコンテナを立ち上げる
+up:
 	docker compose up -d
 
-# postgresのコンテナに入る
+# Docker Composeを使用してコンテナを停止する
+stop:
+	docker compose stop
+
+# Docker Composeを使用してコンテナを削除する
+down:
+	docker compose down
+
+# Postgresコンテナに入る
 postgres:
 	docker exec -it postgres /bin/sh
 
-# コンテナに入った後
+# コンテナに入った後のコマンド
 # psql -h localhost -U postgres -d postgres
 # password: password
